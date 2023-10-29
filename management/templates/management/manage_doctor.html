@@ -1,0 +1,199 @@
+{% extends 'management/base.html' %}
+
+
+{% block content %}
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title-box">
+                        <h4>Manage Doctors</h4>
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Admin Panel</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Management</a></li>
+                                <li class="breadcrumb-item active">Manage Doctors</li>
+                            </ol>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="state-information d-none d-sm-block">
+                        <div class="state-graph">
+                            <div id="header-chart-1" data-colors='["--bs-primary"]'></div>
+                            <div class="info">Balance $ 2,317</div>
+                        </div>
+                        <div class="state-graph">
+                            <div id="header-chart-2" data-colors='["--bs-info"]'></div>
+                            <div class="info">Item Sold 1230</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="card-title">Medical Demertments</h4>
+                            <p class="card-title-desc">Create and Manage Medical Depertments.</p>
+                            <div style="text-align: end;">
+                                <a href="{% url 'new_department' %}" class="btn btn-primary">Add Department</a>
+                            </div>
+                            <div class="table-rep-plugin">
+                                <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                    <table id="tech-companies-1" class="table  table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th data-priority="1">Created By</th>
+                                                <th data-priority="3">Created On</th>
+                                                <th data-priority="1">Update By</th>
+                                                <th data-priority="3">Update On</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for dpt in depertment %}
+                                            <tr>
+                                                <td>{{ dpt.name}}</td>
+                                                <td>{{dpt.created_by}}</td>
+                                                <td>{{dpt.created_at}}</td>
+                                                <td>
+                                                    {% if dpt.update_by %}
+                                                    {{dpt.update_by}}
+                                                    {% else %}
+                                                    <i>Not updated yet</i>
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{dpt.update_at}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+
+            <!-- end row -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+        
+                            <h4 class="card-title">Medical Specialist</h4>
+                            <p class="card-title-desc">Create and Manage Medical Specialist.</p>
+                            <div style="text-align: end;">
+                                <a href="{% url 'new_specialist' %}" class="btn btn-primary">Add Specialist</a>
+                            </div>
+                            <div class="table-rep-plugin">
+                                <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                    <table id="tech-companies-1" class="table  table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for spt in specialist %}
+                                            <tr>
+                                                <td>{{ spt.title}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+        
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+        
+                            <h4 class="card-title">Medical Doctor</h4>
+                            <p class="card-title-desc">Create and Manage Medical Doctor.</p>
+                            <div style="text-align: end;">
+                                <a href="{% url 'new_doctor' %}" class="btn btn-primary">Add Doctor</a>
+                            </div>
+                            <div class="table-rep-plugin">
+                                <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                    <table id="tech-companies-1" class="table  table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Image</th>
+                                                <th data-priority="1">Created By</th>
+                                                <th data-priority="3">Created On</th>
+                                                <th data-priority="1">Update By</th>
+                                                <th data-priority="3">Update On</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for doctor in doctors %}
+                                            <tr>
+                                                <td>{{ doctor.name}}</td>
+                                                <td>
+                                                    {% if doctor.image %}
+                                                        <img src="{{doctor.image.url}}" style="height: 100px;">
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{doctor.created_by}}</td>
+                                                <td>{{doctor.created_at}}</td>
+                                                <td>
+                                                    {% if doctor.update_by %}
+                                                    {{doctor.update_by}}
+                                                    {% else %}
+                                                    <i>Not update yet</i>
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{doctor.update_at}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+        
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+    
+    
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    © <script>document.write(new Date().getFullYear())</script> Lexa <span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+{% endblock %}
+    
