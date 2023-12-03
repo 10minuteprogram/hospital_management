@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>Sign in</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      margin-top: 100px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .btn-login-signup {
+      width: 100%;
+    }
+
+    .btn-login-signup:hover {
+      background-color: #343a40;
+    }
+
+    .btn-login-signup.btn-login {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .btn-login-signup.btn-signup {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    .login-signup-link {
+      text-align: center;
+    }
+
+    .login-signup-link a {
+      color: #007bff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Login</h2>
+    {% if message %}
+    <h4 style="color: red;">{{message}}</h4>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="login-username">Username</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username">
+      </div>
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-login-signup btn-login">Login</button>
+      <div class="login-signup-link">
+        <a href="{% url 'sign-up' %}">Don't have an account? Sign up here.</a>
+      </div>
+    </form>
+  </div>
+  
+  </body>
+  </html>

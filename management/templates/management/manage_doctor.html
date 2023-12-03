@@ -131,42 +131,69 @@
                             <div style="text-align: end;">
                                 <a href="{% url 'new_doctor' %}" class="btn btn-primary">Add Doctor</a>
                             </div>
+                            <div style="text-align: start;">
+                                <form method="GET">
+                                    <select name="department" id="">
+                                        <option value="" selected>Select a Department</option>
+                                        {% for dpt in depertment %}
+                                            <option value="{{ dpt.name }}">{{ dpt.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <input type="text" name="search" placeholder="Search Doctor by name or hospital" id="">
+                                    <input type="submit" value="Search Doctor" class="btn btn-success" id="">
+                                </form>
+                            </div>
                             <div class="table-rep-plugin">
                                 <div class="table-responsive mb-0" data-pattern="priority-columns">
-                                    <table id="tech-companies-1" class="table  table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Image</th>
-                                                <th data-priority="1">Created By</th>
-                                                <th data-priority="3">Created On</th>
-                                                <th data-priority="1">Update By</th>
-                                                <th data-priority="3">Update On</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for doctor in doctors %}
-                                            <tr>
-                                                <td>{{ doctor.name}}</td>
-                                                <td>
-                                                    {% if doctor.image %}
-                                                        <img src="{{doctor.image.url}}" style="height: 100px;">
-                                                    {% endif %}
-                                                </td>
-                                                <td>{{doctor.created_by}}</td>
-                                                <td>{{doctor.created_at}}</td>
-                                                <td>
-                                                    {% if doctor.update_by %}
-                                                    {{doctor.update_by}}
-                                                    {% else %}
-                                                    <i>Not update yet</i>
-                                                    {% endif %}
-                                                </td>
-                                                <td>{{doctor.update_at}}</td>
-                                            </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
+                                    
+                                    {% if doctors %}
+                                        <table id="tech-companies-1" class="table  table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Image</th>
+                                                    <th>Department</th>
+                                                    <th>Hospital</th>
+                                                    <th data-priority="1">Created By</th>
+                                                    <th data-priority="3">Created On</th>
+                                                    <th data-priority="1">Update By</th>
+                                                    <th data-priority="3">Update On</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for doctor in doctors %}
+                                                <tr>
+                                                    <td>{{ doctor.name}}</td>
+                                                    <td>
+                                                        {% if doctor.image %}
+                                                            <img src="{{doctor.image.url}}" style="height: 100px;">
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {{ doctor.department.name }}
+                                                    </td>
+                                                    <td>
+                                                        {{ doctor.hospital }}
+                                                    </td>
+                                                    <td>{{doctor.created_by}}</td>
+                                                    <td>{{doctor.created_at}}</td>
+                                                    <td>
+                                                        {% if doctor.update_by %}
+                                                        {{doctor.update_by}}
+                                                        {% else %}
+                                                        <i>Not update yet</i>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>{{doctor.update_at}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                    <div class="alert alert-primary" role="alert">
+                                        No doctors found
+                                      </div>
+                                    {% endif %}
                                 </div>
         
                             </div>

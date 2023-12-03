@@ -1,0 +1,7 @@
+# SMTP Email Confgi
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_PORT = 587  # Use the appropriate port for your email server
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'no-reply@mail.10minuteprogram.net'
+EMAIL_HOST_PASSWORD = '40d2aa36706275fd186a3ca25557b2b7-5d2b1caa-a99c2735'

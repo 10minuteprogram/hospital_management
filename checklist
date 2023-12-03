@@ -1,0 +1,20 @@
+1. Install pipenv (pip install pipenv)
+2. Create virtual env ($ pipenv shell, $ pipenv install)
+3. Install Django ($ pipenv install django, $ pipenv instal django==4.2.0 - Installing specific version)
+4. Create Django project ($ django-admin startproject project_name)
+5. Create app ($ python manage.py startapp app_name)
+6. Install app to settings.py (Go to settings and add the app name in the INSTALLED_APP list)
+7. Migrate database ($ pytho manage.py migrate)
+    i. When any models changes or added or deleted, 
+       a. $ python manage.py makemigrations
+       b. $ python manage.py migrate
+8. MySQL database configuration
+9. Create superuser ($ python manage.py createsuperuser)
+10. Access admin panel
+11. Create a View function and url route in the app urls.py (In app urls.py needs to create)
+12. Inlcude app's urls.py py into main urls.py (in project folder)
+13. Dynamic parameter
+14. Create models with all data type and register the model in the admin panel
+15. CRUD of models from view function and template
+16. Template extends, includes, theme integrations and breakdown, using for loop, if else, data printing in template
+17. Login functionality from template and views.py
